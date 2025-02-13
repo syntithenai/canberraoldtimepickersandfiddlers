@@ -327,6 +327,7 @@ const App = () => {
         onProgress={mediaProgress}
         onEnded={finishedPlaying}
         onReady={mediaReady}
+        onPause={function() {setIsPlaying(false)}}
         width="100%" 
         height="50px"
         progressInterval={100}

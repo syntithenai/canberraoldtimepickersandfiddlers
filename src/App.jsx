@@ -37,7 +37,7 @@ const App = () => {
     if (notationRef.current && currentNotationTune) {
       const abc = createABCFromJSON(currentNotationTune)
       console.log(abc)
-      ABCJS.renderAbc(notationRef.current, abc, {transpose: currentNotationTune.transpose});
+      ABCJS.renderAbc(notationRef.current, abc, {transpose: currentNotationTune.transpose, responsive: "resize"});
     }
   }, [currentNotationTune]);
 
@@ -200,16 +200,23 @@ const App = () => {
   function createABCFromJSON(tune) {
     let final = []
     final.push("X: 111")
-    if (tune && tune.key) final.push("M: "+ tune.meter)
-    if (tune && tune.key) final.push("L: "+ tune.noteLength)
+    if (tune && tune.composer) final.push("C: "+ tune.composer)
+    if (tune && tune.meter) final.push("M: "+ tune.meter)
+    if (tune && tune.noteLength) final.push("L: "+ tune.noteLength)
     if (tune && tune.key) final.push("K: "+ tune.key)
     if (tune && tune.notes) final.push(tune.notes)
+    if (tune && Array.isArray(tune.lyrics) && tune.lyrics.length > 0) {
+      tune.lyrics.forEach(function (lyricLine) {
+        final.push('W: ' + lyricLine)
+      })
+    }  
     return final.join("\n").replace("\n\n","\n") + "\n\n"
   }
 
   function setupNotation(tune) {
     setLinkSelection(tune.id,0,false)
     setCurrentNotationTune(tune)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     console.log('setup',tune)
   }
 
@@ -296,7 +303,7 @@ const App = () => {
       </div>
 
 
-      {(currentNotationTune) && <div style={{ marginTop:'7em',paddingTop:'2em', height:'2000px', top:'6em', left: 0, width:'100%',  backgroundColor:'white', zIndex: 50}}  >
+      {(currentNotationTune) && <div style={{ marginTop:'5em',paddingTop:'2em', height:'2000px', width:'100%',  backgroundColor:'white', zIndex: 50}}  >
               <Button variant="secondary" style={{float:'right'}} onClick={function() {setCurrentNotationTune(null)}} ><CloseButton/></Button>
               <div ref={notationRef}></div>
       </div>}
@@ -316,7 +323,7 @@ const App = () => {
         ref={playerRef}
       />}
 
-    {!currentNotationTune && <Container style={{ marginTop: "7em" }}>
+    {!currentNotationTune && <Container style={{ marginTop: "5em" }}>
         <TuneList tunes={filteredTunes} {...{setLinkSelection, selectedTuneKey, setupNotation}}  />
       </Container>}
     </>

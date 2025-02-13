@@ -13,6 +13,7 @@ function parseABC(abcText) {
             links: [],
             linkStarts: [],
             linkEnds: [],
+            lyrics: [],
             notes: ""
         };
         console.log(block)
@@ -27,6 +28,8 @@ function parseABC(abcText) {
                 tune.composer = line.substring(2).trim();
             } else if (line.startsWith("K:")) {
                 tune.key = line.substring(2).trim();
+            } else if (line.startsWith("W: ")) {
+                tune.lyrics.push(line.substring(2).trim())
             } else if (line.startsWith("M:")) {
                 tune.meter = line.substring(2).trim() ? line.substring(2).trim() : 'C';
             } else if (line.startsWith("L:")) {

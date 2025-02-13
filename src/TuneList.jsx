@@ -11,8 +11,8 @@ export default function TuneList ({ tunes , selectedTuneKey, setLinkSelection, s
   return (
     <ListGroup flush >
       {tunes.map((tune, index) => ( 
-        <ListGroup.Item key={index} style={{width:'100%', border:((selectedTuneKey )  === index + 1) ? '3px solid black' : '1px solid black', backgroundColor:(index%2 ==0) ? '#b4b3d3' : 'lightblue' }}>
-          <Button variant="outline"  onClick={function() {
+        <ListGroup.Item key={index} style={{width:'100%', border:(parseInt(selectedTuneKey )  == (index + 1)) ? '3px solid black' : '1px solid black', backgroundColor:(index%2 ==0) ? '#b4b3d3' : 'lightblue' }}>
+          ||{index}||{selectedTuneKey}||<Button variant="outline"  onClick={function() {
             setLinkSelection(tune.id,0, false)
         }}>
             <h5 style={{float:'left'}}>{tune.title} </h5>

@@ -288,13 +288,23 @@ const App = () => {
         <div style={{ marginTop:'1em', paddingBottom:'0.1em', width:'100%'}}>{progress}<ProgressBar onClick={handleProgressClick} now={progress} style={{width:'100%'}} /></div>
 
         <div style={{ color:'white',  width:'100%'}}>
+        <span style={{float:'left', marginRight:'3em', marginLeft:'1em'}}>
+        {filteredTunes.length} matches
+          </span>
+          
           <span style={{float:'left', marginLeft:'1em'}}>
             {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].title) && <b>{tunes[selectedTuneKey - 1].title}</b>}
           </span>
           <span style={{float:'left', marginLeft:'1em'}}>
             {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].composer && tunes[selectedTuneKey - 1].composer.trim()) && <b> - {tunes[selectedTuneKey - 1].composer}</b>}
           </span>
+          <span style={{float:'left', marginLeft:'2em', fontSize:'0.7em'}}>
+            <a  target='_new' onClick={stopPlaying} href={tunes[selectedTuneKey - 1].links[selectedLink]} >
+              {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].links && Array.isArray(tunes[selectedTuneKey - 1].links) && tunes[selectedTuneKey - 1].links.length > selectedLink) && <b>  {tunes[selectedTuneKey - 1].links[selectedLink]}</b>}
+            </a>
+          </span>
           <span style={{float:'right'}}>
+            
             Progress: {(duration > 0) ? formatTime(parseInt(progress/100 * duration)) : 0}/{formatTime(duration)}&nbsp;&nbsp;&nbsp;&nbsp;
             Speed: {speed}&nbsp;&nbsp;&nbsp;&nbsp;
           </span>

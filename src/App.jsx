@@ -313,7 +313,7 @@ const App = () => {
       </div>
 
 
-      {(currentNotationTune) && <div style={{ marginTop:'5em',paddingTop:'2em', height:'2000px', width:'100%',  backgroundColor:'white', zIndex: 50}}  >
+      {(currentNotationTune) && <div style={{ marginTop:'6em',paddingTop:'2em', height:'2000px', width:'100%',  backgroundColor:'white', zIndex: 50}}  >
               <Button variant="secondary" style={{float:'right'}} onClick={function() {setCurrentNotationTune(null)}} ><CloseButton/></Button>
               <div ref={notationRef}></div>
       </div>}
@@ -334,7 +334,7 @@ const App = () => {
         ref={playerRef}
       />}
 
-    {!currentNotationTune && <Container style={{ marginTop: "5em" }}>
+    {!currentNotationTune && <Container style={{ marginTop: "6em" }}>
         <TuneList tunes={filteredTunes} {...{setLinkSelection, selectedTuneKey, setupNotation}}  />
       </Container>}
     </>

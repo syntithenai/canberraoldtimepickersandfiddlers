@@ -103,9 +103,10 @@ function extractNotesWithSpacing(abcString) {
     return abcString
         .split("\n")
         .map(line => {
+            const l = line.trim()
             // Remove metadata and comment lines but keep bar lines
-            if (/^(?![|]).*[A-Za-z]:/.test(line) || /^%/.test(line)) return "";
-            return line;
+            if (/^(?![|]).*[A-Za-z]:/.test(l) || /^%/.test(l)) return "";
+            return l;
         })
         .join("\n"); // Preserve original formatting
 }

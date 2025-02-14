@@ -298,11 +298,11 @@ const App = () => {
           <span style={{float:'left', marginLeft:'1em'}}>
             {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].composer && tunes[selectedTuneKey - 1].composer.trim()) && <b> - {tunes[selectedTuneKey - 1].composer}</b>}
           </span>
-          <span style={{float:'left', marginLeft:'2em', fontSize:'0.7em'}}>
+          {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].links && Array.isArray(tunes[selectedTuneKey - 1].links) && tunes[selectedTuneKey - 1].links.length > selectedLink) &&  <span style={{float:'left', marginLeft:'2em', fontSize:'0.7em'}}>
             <a  target='_new' onClick={stopPlaying} href={tunes[selectedTuneKey - 1].links[selectedLink]} >
-              {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].links && Array.isArray(tunes[selectedTuneKey - 1].links) && tunes[selectedTuneKey - 1].links.length > selectedLink) && <b>  {tunes[selectedTuneKey - 1].links[selectedLink]}</b>}
+              {<b>  {tunes[selectedTuneKey - 1].links[selectedLink]}</b>}
             </a>
-          </span>
+          </span>}
           <span style={{float:'right'}}>
             
             Progress: {(duration > 0) ? formatTime(parseInt(progress/100 * duration)) : 0}/{formatTime(duration)}&nbsp;&nbsp;&nbsp;&nbsp;

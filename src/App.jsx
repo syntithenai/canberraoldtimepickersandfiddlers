@@ -299,7 +299,7 @@ const App = () => {
             {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].composer && tunes[selectedTuneKey - 1].composer.trim()) && <b> - {tunes[selectedTuneKey - 1].composer}</b>}
           </span>
           {((selectedTuneKey > 0) && tunes[selectedTuneKey - 1] && tunes[selectedTuneKey - 1].links && Array.isArray(tunes[selectedTuneKey - 1].links) && tunes[selectedTuneKey - 1].links.length > selectedLink) &&  <span style={{float:'left', marginLeft:'2em', fontSize:'0.7em'}}>
-            <a  target='_new' onClick={stopPlaying} href={tunes[selectedTuneKey - 1].links[selectedLink]} >
+            <a  target='_new' onClick={stopPlaying} href={tunes[selectedTuneKey - 1].links[selectedLink] + "&t=" + parseInt(progress * duration /100)} >
               {<b>  {tunes[selectedTuneKey - 1].links[selectedLink]}</b>}
             </a>
           </span>}

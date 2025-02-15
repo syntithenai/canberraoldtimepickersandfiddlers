@@ -16,7 +16,8 @@ export default function TuneList ({ tunes , selectedTuneKey, setLinkSelection, s
             setLinkSelection(tune.id,0, false)
         }}>
             <h5 style={{float:'left'}}>{tune.title} </h5>
-            {(tune.tuning || tune.transposed_key) && <span style={{float:'left', marginLeft:'1em'}} >(</span>}{ tune.transposed_key && <span style={{float:'left'}} ><strong>Key:</strong> {tune.transposed_key} </span>}{tune.tuning && <span style={{float:'left', marginLeft:'1em'}}><strong>Tuning:</strong> {tune.tuning} </span>}{(tune.tuning || tune.transposed_key) && <span style={{float:'left'}}>)</span>}
+            { tune.transposed_key && <Button variant="outline-success" style={{float:'left', marginLeft:'2em', fontWeight:'bold'}} >{tune.transposed_key} </Button>}
+            {tune.tuning && <Button variant="outline-secondary" style={{float:'left', marginLeft:'2em', fontWeight:'bold'}}>{tune.tuning} </Button>}
           </Button>
         <span style={{float:'right'}}>
             {tune.links.map((link, i) => (
@@ -36,3 +37,7 @@ export default function TuneList ({ tunes , selectedTuneKey, setLinkSelection, s
     </ListGroup>
   );
 };
+
+
+// {(tune.tuning || tune.transposed_key) && <span style={{float:'left', marginLeft:'1em'}} >(</span>}
+//   { tune.transposed_key && <span style={{float:'left'}} ><strong>Key:</strong> {tune.transposed_key} </span>}{tune.tuning && <span style={{float:'left', marginLeft:'1em'}}><strong>Tuning:</strong> {tune.tuning} </span>}{(tune.tuning || tune.transposed_key) && <span style={{float:'left'}}>)</span>}

@@ -18,18 +18,18 @@ export default defineConfig({
         theme_color: '#000000',
         icons: [
           {
-            src: '/canberraoldtimepickersandfiddlers/icon-192.png',
+            src: '/canberraoldtimepickersandfiddlers/logo-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/canberraoldtimepickersandfiddlers/icon-512.png',
+            src: '/canberraoldtimepickersandfiddlers/logo-512.png',
             sizes: '512x512',
             type: 'image/png'
           }
           ,
           {
-            src: '/canberraoldtimepickersandfiddlers/icon-144.png',
+            src: '/canberraoldtimepickersandfiddlers/logo-144.png',
             sizes: '144x144',
             type: 'image/png'
           }
